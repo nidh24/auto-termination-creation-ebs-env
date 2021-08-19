@@ -12,5 +12,5 @@ def describeEnv():
 
     print("getting a List of Applications : ", ebs.getListofApplications())
     for appId in Config.appIds:
-        print("getting a List of Environments in an application : ", appId, " \n" ,ebs.getListofEnvironments(appId))
+        print("getting a List of Environments in application,", appId,ebs.getListofEnvironments(appId))
     print("getting a List of Environments application wise : ", ebs.getListofAppWiseEnvironments())

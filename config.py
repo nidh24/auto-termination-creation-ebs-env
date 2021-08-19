@@ -6,14 +6,13 @@ from datetime import time
 
 class Config:
 
-    AWS_ACCESS_KEY_ID = "ACCESS_KEY_ID"
-    AWS_SECRET_ACCESS_KEY = "SECRET_ACCESS_KEY"
-
     createTime = time(10, 0)
     terminateTime = time(22, 0)
     describeTime = time(16, 0)
+
     envIds = ["e-hszam2j2dh"]
     appIds = ["testingAutomation"] 
+    
     EVENT_PAYLOAD_CREATE = {
           "version": "0",
           "id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",

@@ -3,14 +3,15 @@ Module to handle Json functions related to EBS
 """
 from boto3 import client, resource
 from config import Config
-
+import os
 
 class EBShandler:
-
     def __init__(self):
+        AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_id")
+        AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_key")
         self.client = client('elasticbeanstalk', region_name="us-east-1",
-                             aws_access_key_id=Config.AWS_ACCESS_KEY_ID,
-                             aws_secret_access_key=Config.AWS_SECRET_ACCESS_KEY)
+                             aws_access_key_id=AWS_ACCESS_KEY_ID,
+                             aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
 
     def terminateEnvironment(self, envId):
@@ -54,5 +55,5 @@ class EBShandler:
 
 
     def getListofAppWiseEnvironments(self):
-        return {application: [environment["EnvironmentId"] for environment in self.describeEnvironments(application)
-        ["Environments"]] for application in self.describeApplications()}
+        return {app["ApplicationName"]: [environment["EnvironmentId"] for environment in self.describeEnvironments(app["ApplicationName"])
+        ["Environments"]] for app in self.describeApplications()["Applications"]}
