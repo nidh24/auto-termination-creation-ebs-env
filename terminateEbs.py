@@ -15,6 +15,3 @@ def terminateEnv():
             print("Terminating environment at ", datetime.now().strftime("%H:%M:%S %d-%m-%Y"), "\nResponse : ", responseEnv)
         else:
             print("Termination of environment failed at ", datetime.now().strftime("%H:%M:%S %d-%m-%Y"), "\nResponse : ", responseEnv)
-
-    # responseApp = ebs.deleteApplication()
-    # print(responseApp)
