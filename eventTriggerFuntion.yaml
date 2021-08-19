@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  eventTriggerFuntion:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: main.handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 180
+      Role: >-
+        arn:aws:iam::<account-id>:role/service-role/eventTriggerFuntion-role-wdmw6coy
+      Events:
+        Schedule1:
+          Type: Schedule
+          Properties:
+            Schedule: cron(30 4 ? * 2-6 *)
